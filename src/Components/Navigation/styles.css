@@ -1,3 +1,14 @@
-.mainNav{
-    height: 70px;
+.mainNav {
+  height: 70px;
+  background-color: green;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
+
+.navbar-title {
+
+  font-size: 24px;
+  font-weight: 700;
+  color: #29272e;
+  text-transform: uppercase;
+}
+

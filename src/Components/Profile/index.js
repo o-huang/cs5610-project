@@ -1,13 +1,93 @@
 import React from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
+import "./profile.css";
+import CountryCard from "../Card/CourseCard";
 function Profile() {
+  const ratedCountries = [
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    {
+      name: "Country 2",
+      rating: 5,
+      description: "A must-visit destination for travelers.",
+      flags:"https://via.placeholder.com/80"
+    },
+    // Add more countries as needed
+  ];
+
+  const getRandomImageUrl = () => {
+    const imageUrls = [
+      "https://via.placeholder.com/80",
+
+      // Add more image URLs as needed
+    ];
+    return imageUrls[Math.floor(Math.random() * imageUrls.length)];
+  };
   return (
     <div className="d-flex align-items-center justify-content-center">
-      <div className="w-100" style={{ maxWidth: "1000px" }}>
+      <div className="w-100" style={{ maxWidth: "1300px" }}>
         <>
-          <Card>
+          <Card className="main-card">
             <Card.Body>
               <h2 className="mb-4">
                 Owen Huang
@@ -46,6 +126,24 @@ function Profile() {
                     disabled
                   />
                 </Form.Group>
+
+                <div className="row mx-1 mainCardDiv mt-2">
+                  <h3 className="rancho-font">My Rated Countries</h3>
+                  <div className="d-flex flex-wrap overflow-div ">
+                    {ratedCountries.map((country, index) => (
+                      <CountryCard key={index} country={country} />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="row mx-1 mainCardDiv mt-2">
+                  <h3 className="rancho-font">My Commented Countries</h3>
+                  <div className="d-flex flex-wrap overflow-div ">
+                    {ratedCountries.map((country, index) => (
+                      <CountryCard key={index} country={country} />
+                    ))}
+                  </div>
+                </div>
               </Form>
             </Card.Body>
           </Card>

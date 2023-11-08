@@ -5,7 +5,7 @@ function navbar() {
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light mainNav">
       <div class="container-fluid">
-        <h3>MovieSpot</h3>
+        <h3 class="navbar-title rancho-font">CountrySpot</h3>
 
         <div
           className="collapse navbar-collapse justify-content-end"
@@ -18,8 +18,8 @@ function navbar() {
             <Link class="nav-link" to="/profile">
               Profile
             </Link>
-            <Link class="nav-link" to="/movie">
-              Movie
+            <Link class="nav-link" to="/country">
+              Country
             </Link>
             <Link class="nav-link" to="/login">
               Login

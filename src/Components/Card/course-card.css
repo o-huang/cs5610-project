@@ -1,0 +1,58 @@
+.col-min-width {
+  min-width: 250px;
+  margin: 15px;
+  max-width: 250px;
+}
+
+.country-card:hover{
+  box-shadow: 0 0 10px #f15f2a; /* Adjust the color, size, and other properties as needed */
+  transition: box-shadow 0.3s ease; /* Add a smooth transition effect */
+}
+
+.card-background-color {
+  box-sizing: border-box;
+  height: 146px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: grey;
+}
+
+.card-main-title {
+  line-height: 1.3;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: #f15f2a !important;
+}
+
+.card-sub-title {
+  line-height: 1.3;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+  margin-top: 2px !important ;
+  color: #677179;
+}
+
+.card-mini-title {
+  line-height: 1.3;
+  color: #677179;
+  font-size: 12px;
+  height: 1rem;
+}
+
+.cardIcon {
+  color: #677179;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+
+
+/* Country Image */
+.country-flag-image{
+    height: 100%;
+    width: 100%;
+}
+/* Country Image END */

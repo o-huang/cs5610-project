@@ -2,10 +2,12 @@ import React from "react";
 import { HashRouter, BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import { Navigate } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from "./Home";
 import Profile from "./Profile";
-import Movie from "./Movie";
+import Country from "./Country";
+import CountryDetail from "./Country/CountryDetail";
 import Login from "./Authentication/Login";
 import SignUp from "./Authentication/SignUp";
 import Navbar from "./Navigation/navbar";
@@ -23,7 +25,8 @@ function App() {
             <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/movie" element={<Movie />} />
+            <Route path="/country" element={<Country />} />
+            <Route path="/country/:countryName" element={<CountryDetail />} />
             <Route path="/editprofile" element={<EditProfile/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/signup" element={<SignUp/>} />
