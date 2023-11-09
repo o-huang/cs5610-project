@@ -18,3 +18,48 @@
   border-radius: 10px;
   padding: 10px;
 }
+
+.imageHeader {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageHeader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url("./homeImage.jpg") no-repeat;
+  background-size: cover;
+  filter: brightness(0.7); /* Adjust the brightness value */
+}
+
+
+
+.homePageCenterText {
+  position: relative;
+  z-index: 1;
+  font-family: 'Rancho', cursive;
+  color: white;
+  font-size: 100px;
+  font-weight: 700;
+  margin: 0; /* Remove margin-top and margin-bottom */
+  text-align: center; /* Center the text horizontally */
+}
+
+.homePageCenterTextSub{
+  position: relative;
+  z-index: 1;
+  font-family: 'Rancho', cursive;
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0; /* Remove margin-top and margin-bottom */
+  text-align: center; /* Center the text horizontally */
+}

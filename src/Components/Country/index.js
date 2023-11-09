@@ -43,7 +43,8 @@ function CountryInfo() {
       </div>
       <div className="row">
         {filteredCountries.map((country, index) => (
-          <CountryCard key={index} country={country} />
+          
+          <CountryCard keyIndex={index} country={country} />
         ))}
       </div>
     </div>

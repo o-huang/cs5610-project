@@ -2,11 +2,11 @@ import { TfiPencilAlt } from "react-icons/tfi";
 import "./course-card.css";
 import { Link } from "react-router-dom";
 
-function CourseCard({ country }) {
+function CourseCard({ country, keyIndex }) {
   return (
     <div className="col-auto col-min-width">
       <div className="item">
-        <Link to={`/country/${country.name}`}>
+        <Link to={`/country/${keyIndex}/${country.name}`}>
           <div className="card country-card">
             <div className="card-background-color">
               <img
