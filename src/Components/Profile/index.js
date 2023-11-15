@@ -10,67 +10,67 @@ function Profile() {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     {
       name: "Country 2",
       rating: 5,
       description: "A must-visit destination for travelers.",
-      flags:"https://via.placeholder.com/80"
+      flags: "https://via.placeholder.com/80",
     },
     // Add more countries as needed
   ];
@@ -131,7 +131,7 @@ function Profile() {
                   <h3 className="rancho-font">My Rated Countries</h3>
                   <div className="d-flex flex-wrap overflow-div ">
                     {ratedCountries.map((country, index) => (
-                      <CountryCard key={index} country={country} />
+                      <CountryCard keyIndex={index} country={country} alpha3Code ={country.alpha3Code}/>
                     ))}
                   </div>
                 </div>
@@ -140,7 +140,7 @@ function Profile() {
                   <h3 className="rancho-font">My Commented Countries</h3>
                   <div className="d-flex flex-wrap overflow-div ">
                     {ratedCountries.map((country, index) => (
-                      <CountryCard key={index} country={country} />
+                      <CountryCard keyIndex={index} country={country} alpha3Code ={country.alpha3Code}/>
                     ))}
                   </div>
                 </div>

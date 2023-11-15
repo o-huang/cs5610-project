@@ -4,8 +4,8 @@ import axios from "axios";
 import "./country.css";
 import {BsFillHandThumbsUpFill} from "react-icons/bs";
 function MovieDetail() {
-  const { countryName, countryId } = useParams();
-  console.log(countryName, countryId);
+  const { countryName, countryId,alpha3Code } = useParams();
+ 
   const [country, setCountry] = useState(null);
 
   const [comments, setComments] = useState([]);

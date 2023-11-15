@@ -29,7 +29,7 @@ function App() {
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/country" element={<Country />} />
-              <Route path="/country/:countryId/:countryName" element={<CountryDetail />} />
+              <Route path="/country/:countryName/:alpha3Code" element={<CountryDetail />} />
               <Route path="/editprofile" element={<EditProfile />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />

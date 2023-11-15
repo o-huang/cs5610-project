@@ -43,7 +43,7 @@ function Home() {
           <h3 className="rancho-font">Top 10 Rated Countries</h3>
           <div className="d-flex flex-wrap overflow-div ratedCountries">
             {ratedCountries.map((country, index) => (
-              <CountryCard key={index} country={country} />
+              <CountryCard keyIndex ={index} country={country} alpha3Code ={country.alpha3Code}/>
             ))}
           </div>
         </div>
@@ -52,7 +52,7 @@ function Home() {
           <h3 className="rancho-font">Top 10 Commented Countries</h3>
           <div className="d-flex flex-wrap overflow-div commentedCountries">
             {commentedCountries.map((country, index) => (
-              <CountryCard key={index} country={country} />
+              <CountryCard keyIndex ={index} country={country} alpha3Code ={country.alpha3Code} />
             ))}
           </div>
         </div>
@@ -61,7 +61,7 @@ function Home() {
           <h3 className="rancho-font">Your Top 10 Rated Countries</h3>
           <div className="d-flex flex-wrap overflow-div UserRatedCountries">
             {ratedCountries.map((country, index) => (
-              <CountryCard key={index} country={country} />
+              <CountryCard keyIndex ={index} country={country} alpha3Code ={country.alpha3Code}/>
             ))}
           </div>
         </div>
@@ -70,7 +70,7 @@ function Home() {
           <h3 className="rancho-font">Your Top 10 Commented Countries</h3>
           <div className="d-flex flex-wrap overflow-div UserCommentedCountries">
             {ratedCountries.map((country, index) => (
-              <CountryCard key={index} country={country} />
+              <CountryCard keyIndex ={index} country={country} alpha3Code ={country.alpha3Code} />
             ))}
           </div>
         </div>
