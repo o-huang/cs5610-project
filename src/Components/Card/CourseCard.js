@@ -1,12 +1,13 @@
 import { TfiPencilAlt } from "react-icons/tfi";
 import "./course-card.css";
 import { Link } from "react-router-dom";
-
-function CourseCard({ country, keyIndex ,alpha3Code}) {
+import { useSelector, useDispatch } from "react-redux";
+function CourseCard({ country, keyIndex, alpha3Code }) {
+  const currentUser = useSelector((state) => state.user.currentUser);
   return (
     <div className="col-auto col-min-width">
       <div className="item">
-        <Link to={`/country/${country.name}/${alpha3Code}`}>
+        <Link to={currentUser ? `/detail/${country.name}/${alpha3Code}` : '/login'}>
           <div className="card country-card">
             <div className="card-background-color">
               <img

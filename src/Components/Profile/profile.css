@@ -9,3 +9,12 @@ body {
 .rancho-font{
   font-family: 'Rancho', cursive;
 }
+
+.profileHeader{
+  font-size: 50px;
+  text-transform: capitalize;
+}
+
+.username-style{
+  text-transform: capitalize;
+}

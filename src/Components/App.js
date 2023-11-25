@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HashRouter, BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router";
 import { Navigate } from "react-router-dom";
@@ -12,10 +12,24 @@ import Login from "./Authentication/Login";
 import SignUp from "./Authentication/SignUp";
 import Navbar from "./Navigation/navbar";
 import EditProfile from "./Profile/UpdateProfile";
+import OtherUserProfile from "./Profile/OtherUserProfile";
 import "./styles.css";
 import store from "./store";
 import { Provider } from "react-redux";
+import { setCurrentUser } from "./User/userReducer";
+import { useSelector } from "react-redux";
 function App() {
+  // const currentUser = useSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      store.dispatch(setCurrentUser(user));
+    }
+  }, []);
+
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -28,8 +42,12 @@ function App() {
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/country" element={<Country />} />
-              <Route path="/country/:countryName/:alpha3Code" element={<CountryDetail />} />
+              <Route path="/profile/:profileId" element={<OtherUserProfile />} />
+              <Route path="/search" element={<Country />} />
+              <Route
+                path="/detail/:countryName/:alpha3Code"
+                element={<CountryDetail />}
+              />
               <Route path="/editprofile" element={<EditProfile />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
