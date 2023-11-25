@@ -39,10 +39,13 @@ function App() {
           </div>
           <div className="row contentRow">
             <Routes>
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
+              {/* <Route path="/home" element={<Home />} /> */}
               <Route path="/profile" element={<Profile />} />
-              <Route path="/profile/:profileId" element={<OtherUserProfile />} />
+              <Route
+                path="/profile/:profileId"
+                element={<OtherUserProfile />}
+              />
               <Route path="/search" element={<Country />} />
               <Route
                 path="/detail/:countryName/:alpha3Code"

@@ -67,8 +67,8 @@ function UpdateProfile() {
         <>
           <Card>
             <Card.Body>
-              <h2 className="mb-4">
-                Owen Huang
+              <h2 className="mb-4 rancho-font profileHeader">
+                {username}
                 <Link to="/editprofile"> </Link>
               </h2>
 

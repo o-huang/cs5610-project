@@ -100,7 +100,7 @@ function MovieDetail() {
 
   const handleDisableComments = async () => {
     try {
-      const commentId = `comment_country_{alpha3Code}`;
+      const commentId = `comment_country_${alpha3Code}`;
       const commentRef = ref(database, "commentTextAreaStatus");
       const commentSnapshot = await get(child(commentRef, commentId));
 
@@ -161,7 +161,7 @@ function MovieDetail() {
   useEffect(() => {
     const fetchCommentDisabled = async () => {
       try {
-        const commentId = `comment_country_{alpha3Code}`;
+        const commentId = `comment_country_${alpha3Code}`;
 
         const commentSnapshot = await get(
           child(ref(database, "commentTextAreaStatus"), commentId)
