@@ -1,5 +1,5 @@
-import React from "react";
-import { Form, Button, Card } from "react-bootstrap";
+import React, { useState } from "react";
+import { Form, Button, Card, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiFillEdit } from "react-icons/ai";
 import { auth } from "../../firebase";
@@ -8,25 +8,30 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "../User/userReducer";
+
 function SignUp() {
-  const [username, setUsername] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [phoneNumber, setPhoneNumber] = React.useState("");
-  const [regularUser, setRegularUser] = React.useState(false);
-  const [adminUser, setAdminUser] = React.useState(false);
-  const [moderatorUser, setModeratorUser] = React.useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [regularUser, setRegularUser] = useState(false);
+  const [adminUser, setAdminUser] = useState(false);
+  const [moderatorUser, setModeratorUser] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Perform basic input validation
+    if (!username || !email || !password) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredentials.user;
 
       const database = getDatabase();
@@ -45,7 +50,7 @@ function SignUp() {
       dispatch(setCurrentUser(user));
       navigate("/");
     } catch (error) {
-      console.log(error);
+      setError(`Error creating user: ${error.message}`);
     }
   };
 
@@ -56,6 +61,8 @@ function SignUp() {
           <Card>
             <Card.Body>
               <h2 className="mb-4 rancho-font">Sign Up Now!</h2>
+
+              {error && <Alert variant="danger">{error}</Alert>}
 
               <Form>
                 <Form.Group id="username" className="mt-2">
@@ -118,11 +125,11 @@ function SignUp() {
                 </Form.Group>
               </Form>
               <div className="d-flex  justify-content-center mt-3">
-                <button className="btn btn-primary mx-3" onClick={handleSubmit}>
+                <Button className="btn btn-primary mx-3" onClick={handleSubmit}>
                   Sign Up!
-                </button>
+                </Button>
                 <Link className="nav-link" to="/login">
-                  <button className="btn btn-primary mx-3">Login</button>
+                  <Button className="btn btn-primary mx-3">Login</Button>
                 </Link>
               </div>
             </Card.Body>

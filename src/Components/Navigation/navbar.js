@@ -18,7 +18,7 @@ function Navbar() {
       localStorage.removeItem("user");
       localStorage.removeItem("token");
       dispatch(logout());
-      navigate("/home");
+      navigate("/");
       window.location.reload();
     } catch (error) {
       console.error("Logout error:", error);
@@ -47,7 +47,7 @@ function Navbar() {
             </Link>
 
             {currentUser ? (
-              <Link className="nav-link" to="/home" onClick={handleLogout}>
+              <Link className="nav-link" to="/" onClick={handleLogout}>
                 Logout{" "}
               </Link>
             ) : (
