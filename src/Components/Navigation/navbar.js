@@ -1,17 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+
 import "./styles.css";
 import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import { auth } from "../../firebase";
 import { logout } from "../User/userReducer";
 import { useSelector } from "react-redux";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import {
+  getDatabase,
+  ref,
+  child,
+  get,
+  set,
+  remove,
+  onValue,
+  off,
+} from "firebase/database";
+
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [usUserModerator, setUsUserModerator] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const database = getDatabase();
 
   const currentUser = useSelector((state) => state.user.currentUser);
+
   const handleLogout = async () => {
     try {
       await signOut(auth);
@@ -24,6 +41,25 @@ function Navbar() {
       console.error("Logout error:", error);
     }
   };
+
+  useEffect(() => {
+    const checkUserIsAdminOrModerator = async () => {
+      try {
+        const userSnapshot = await get(child(ref(database, "users"), user.uid));
+
+        // if (userSnapshot.val().adminUser === true) {
+        //   setIsUserAdmin(true);
+        // }
+
+        if (userSnapshot.val().moderatorUser === true) {
+          setUsUserModerator(true);
+        }
+      } catch (error) {
+        console.error("Error fetching user information:", error);
+      }
+    };
+    checkUserIsAdminOrModerator();
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light mainNav">
@@ -53,6 +89,11 @@ function Navbar() {
             ) : (
               <Link className="nav-link" to="/login">
                 Login{" "}
+              </Link>
+            )}
+            {usUserModerator && (
+              <Link className="nav-link" to="/moderate">
+                Moderator
               </Link>
             )}
           </div>

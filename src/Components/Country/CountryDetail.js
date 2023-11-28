@@ -206,16 +206,13 @@ function MovieDetail() {
           (comment) => comment.alpha3Code === alpha3Code
         );
 
-        // Fetch user information for each comment
         const commentsWithUsernames = await Promise.all(
           commentsArray.map(async (comment) => {
             try {
-              // Fetch user information from the user database
               const userSnapshot = await get(
                 child(ref(database, "users"), comment.user)
               );
 
-              // If user information is found, add the username to the comment
               if (userSnapshot.exists()) {
                 const user = userSnapshot.val();
                 return {
@@ -227,7 +224,6 @@ function MovieDetail() {
               console.error("Error fetching user information:", error);
             }
 
-            // If user information is not found, return the original comment
             return comment;
           })
         );
@@ -239,10 +235,8 @@ function MovieDetail() {
       }
     };
 
-    // Set up a real-time listener for comments
     const commentsListener = onValue(commentsRef, handleData);
 
-    // Clean up the listener when the component unmounts
     const cleanupListener = () => {
       off(commentsRef, "value", handleData);
     };
@@ -377,10 +371,10 @@ function MovieDetail() {
                     <Link className="nav-link" to={`/profile/${comment.user}`}>
                       <h5 className="usernameComment">{comment.username}</h5>
                     </Link>
-                    {comment.user === currentUser.uid || isUserAdmin ? (
+                    {comment.user === currentUser.uid ? (
                       <div>
                         <button
-                          className="btn btn-primary"
+                          className="btn btn-primary mr-2"
                           onClick={() => {
                             setNewComment(comment.comment);
                             setEditingCommentId(comment.commentId);

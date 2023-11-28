@@ -13,11 +13,13 @@ import SignUp from "./Authentication/SignUp";
 import Navbar from "./Navigation/navbar";
 import EditProfile from "./Profile/UpdateProfile";
 import OtherUserProfile from "./Profile/OtherUserProfile";
+import Moderator from "./User/moderator";
 import "./styles.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import { setCurrentUser } from "./User/userReducer";
 import { useSelector } from "react-redux";
+
 function App() {
   // const currentUser = useSelector((state) => state.user.currentUser);
 
@@ -53,6 +55,7 @@ function App() {
               />
               <Route path="/editprofile" element={<EditProfile />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/moderate" element={<Moderator />} />
               <Route path="/signup" element={<SignUp />} />
             </Routes>
           </div>
