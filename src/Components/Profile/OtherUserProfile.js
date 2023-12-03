@@ -17,33 +17,34 @@ function OtherUserProfile() {
   const [username, setUsername] = React.useState("");
 
   const { profileId } = useParams();
-  const currentUser = useSelector((state) => state.user.currentUser);
+  // const currentUser = useSelector((state) => state.user.currentUser);
+  // console.log(currentUser.uid)
   useEffect(() => {
-    if (!currentUser) {
+    if (!profileId) {
       return;
     }
-    processUserTopLikedCountries(currentUser.uid)
+    processUserTopLikedCountries(profileId)
       .then((top10Countries) => {
         setUserTopLikedCountries(top10Countries);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [currentUser]);
+  }, []);
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!profileId) {
       return;
     }
 
-    processUserTopCommentedCountries(currentUser.uid)
+    processUserTopCommentedCountries(profileId)
       .then((top10Countries) => {
         setUserTopCommentedCountries(top10Countries);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [currentUser]);
+  }, []);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -54,7 +55,6 @@ function OtherUserProfile() {
         const snapshot = await get(child(userRef, "/"));
 
         if (snapshot.exists()) {
-         
           setUsername(snapshot.val().username);
         } else {
           console.error("User data not found in the database");
@@ -72,11 +72,16 @@ function OtherUserProfile() {
         <>
           <Card className="main-card">
             <Card.Body>
-              <h2 className="mb-4 rancho-font profileHeader">Profile : {username}</h2>
+              <h2 className="mb-4 rancho-font profileHeader">
+                Profile : {username}
+              </h2>
 
               <Form>
                 <div className="row mx-1 mainCardDiv mt-2">
-                  <h3 className="rancho-font"><span className="username-style">{username}</span> most Liked Countries</h3>
+                  <h3 className="rancho-font">
+                    <span className="username-style">{username}</span> most
+                    Liked Countries
+                  </h3>
                   <div className="d-flex flex-wrap overflow-div ">
                     {userTopLikedCountries.map((country, index) => (
                       <CountryCard
@@ -89,7 +94,10 @@ function OtherUserProfile() {
                 </div>
 
                 <div className="row mx-1 mainCardDiv mt-2">
-                  <h3 className="rancho-font"><span className="username-style">{username}</span> most Commented Countries</h3>
+                  <h3 className="rancho-font">
+                    <span className="username-style">{username}</span> most
+                    Commented Countries
+                  </h3>
                   <div className="d-flex flex-wrap overflow-div ">
                     {userTopCommentedCountries.map((country, index) => (
                       <CountryCard

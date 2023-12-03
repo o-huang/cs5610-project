@@ -34,6 +34,7 @@ function Navbar() {
       await signOut(auth);
       localStorage.removeItem("user");
       localStorage.removeItem("token");
+      localStorage.removeItem("searchTerm");
       dispatch(logout());
       navigate("/");
       window.location.reload();
@@ -62,7 +63,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light mainNav">
+    <nav className="navbar navbar-expand navbar-light bg-light mainNav">
       <div className="container-fluid">
         <h3 className="navbar-title rancho-font">CountrySpot</h3>
 
@@ -78,7 +79,7 @@ function Navbar() {
               Profile
             </Link>
 
-            <Link className="nav-link" to={currentUser ? "/search" : "/login"}>
+            <Link className="nav-link" to={"/search"}>
               Country
             </Link>
 

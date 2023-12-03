@@ -16,6 +16,7 @@ import {
   onValue,
   off,
 } from "firebase/database";
+import { current } from "@reduxjs/toolkit";
 
 function MovieDetail() {
   const { countryName, alpha3Code } = useParams();
@@ -325,43 +326,49 @@ function MovieDetail() {
                 <strong>Native Name:</strong>{" "}
                 {country.nativeName ? country.nativeName : "N/A"}
               </p>
+              {currentUser !== null && (
+                <div className="mt-3">
+                  <button
+                    className={`btn ${
+                      isLiked ? "btn-success" : "btn-secondary"
+                    }`}
+                    onClick={handleLike}
+                  >
+                    <BsFillHandThumbsUpFill /> {isLiked ? "Liked" : "Like"}
+                  </button>
+                  <span
+                    className={`badge badge-${isLiked ? "success" : "light"}`}
+                  ></span>
+                </div>
+              )}
+            </div>
+          </div>
 
-              <div className="mt-3">
+          {currentUser !== null && (
+            <div className="row mt-3">
+              <div className="form-group">
+                <textarea
+                  className="form-control newCommentTextArea"
+                  placeholder={
+                    isCommentDisabled
+                      ? "Comments are disabled"
+                      : "Enter your comment..."
+                  }
+                  value={newComment}
+                  onChange={(e) => setNewComment(e.target.value)}
+                  disabled={isCommentDisabled}
+                />
                 <button
-                  className={`btn ${isLiked ? "btn-success" : "btn-secondary"}`}
-                  onClick={handleLike}
+                  className="btn btn-success w-100 newCommentButton"
+                  onClick={handleAddNewComment}
+                  disabled={isCommentDisabled}
                 >
-                  <BsFillHandThumbsUpFill /> {isLiked ? "Liked" : "Like"}
+                  {editingCommentId ? "Update Comment" : "Add Comment"}
                 </button>
-                <span
-                  className={`badge badge-${isLiked ? "success" : "light"}`}
-                ></span>
               </div>
             </div>
-          </div>
+          )}
 
-          <div className="row mt-3">
-            <div className="form-group">
-              <textarea
-                className="form-control newCommentTextArea"
-                placeholder={
-                  isCommentDisabled
-                    ? "Comments are disabled"
-                    : "Enter your comment..."
-                }
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                disabled={isCommentDisabled}
-              />
-              <button
-                className="btn btn-success w-100 newCommentButton"
-                onClick={handleAddNewComment}
-                disabled={isCommentDisabled}
-              >
-                {editingCommentId ? "Update Comment" : "Add Comment"}
-              </button>
-            </div>
-          </div>
           <div className="row my-3">
             <h2>Comments</h2>
             <ul className="list-group">
@@ -371,7 +378,8 @@ function MovieDetail() {
                     <Link className="nav-link" to={`/profile/${comment.user}`}>
                       <h5 className="usernameComment">{comment.username}</h5>
                     </Link>
-                    {comment.user === currentUser.uid ? (
+                    {currentUser !== null &&
+                    comment.user === currentUser.uid ? (
                       <div>
                         <button
                           className="btn btn-primary mr-2"

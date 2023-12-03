@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import CountryCard from "../Card/CourseCard";
 function CountryInfo() {
   const [countries, setCountries] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem("searchTerm") || ""
+  );
 
   useEffect(() => {
     const apiUrl = "https://restcountries.com/v2/all";
@@ -17,10 +19,12 @@ function CountryInfo() {
   }, []);
 
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    const term = event.target.value;
+    setSearchTerm(term);
+    localStorage.setItem("searchTerm", term);
   };
 
-  // Filter countries based on the case-insensitive search term from the entire list
+
   const filteredCountries = countries.filter((country) =>
     country.name.toLowerCase().includes(searchTerm.toLowerCase())
   );

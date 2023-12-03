@@ -7,7 +7,7 @@ function CourseCard({ country, keyIndex, alpha3Code }) {
   return (
     <div className="col-auto col-min-width">
       <div className="item">
-        <Link to={currentUser ? `/detail/${country.name}/${alpha3Code}` : '/login'}>
+        <Link to={`/detail/${country.name}/${alpha3Code}`}>
           <div className="card country-card">
             <div className="card-background-color">
               <img
