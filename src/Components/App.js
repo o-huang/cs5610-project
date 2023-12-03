@@ -34,7 +34,7 @@ function App() {
 
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <div className="container-fluid">
           <div className="row">
             <Navbar />
@@ -60,7 +60,7 @@ function App() {
             </Routes>
           </div>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
